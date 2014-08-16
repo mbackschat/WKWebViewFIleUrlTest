@@ -89,11 +89,6 @@ didFailProvisionalNavigation:(WKNavigation *)navigation
 - (void)webView:(WKWebView *)webView
 didFinishNavigation:(WKNavigation *)navigation
 {
-    // update the location element with the url
-    NSString* js = [NSString stringWithFormat:@"document.getElementById('location').innerHTML='%@';", self.urlToLoad];
-    [webView evaluateJavaScript:js completionHandler:^(id obj, NSError* error) {
-        
-    }];
 }
 
 @end
