@@ -15,6 +15,8 @@
 		309C3890199E88B90028023E /* WKWebViewFIleUrlTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 309C388F199E88B90028023E /* WKWebViewFIleUrlTestTests.m */; };
 		309C389A199E8BFB0028023E /* www in Resources */ = {isa = PBXBuildFile; fileRef = 309C3899199E8BFB0028023E /* www */; };
 		309C389D199ED3DC0028023E /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 309C389B199ED3DC0028023E /* WebViewController.m */; };
+		309C389F199EE79C0028023E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 309C389E199EE79C0028023E /* WebKit.framework */; };
+		309C38A2199EE8200028023E /* SAWKWebViewUIDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 309C38A1199EE8200028023E /* SAWKWebViewUIDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,9 @@
 		309C3899199E8BFB0028023E /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
 		309C389B199ED3DC0028023E /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		309C389C199ED3DC0028023E /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		309C389E199EE79C0028023E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		309C38A0199EE8200028023E /* SAWKWebViewUIDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAWKWebViewUIDelegate.h; sourceTree = "<group>"; };
+		309C38A1199EE8200028023E /* SAWKWebViewUIDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAWKWebViewUIDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				309C389F199EE79C0028023E /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +72,7 @@
 		309C386A199E88B80028023E = {
 			isa = PBXGroup;
 			children = (
+				309C389E199EE79C0028023E /* WebKit.framework */,
 				309C3899199E8BFB0028023E /* www */,
 				309C3875199E88B80028023E /* WKWebViewFIleUrlTest */,
 				309C388C199E88B90028023E /* WKWebViewFIleUrlTestTests */,
@@ -85,6 +92,8 @@
 		309C3875199E88B80028023E /* WKWebViewFIleUrlTest */ = {
 			isa = PBXGroup;
 			children = (
+				309C38A0199EE8200028023E /* SAWKWebViewUIDelegate.h */,
+				309C38A1199EE8200028023E /* SAWKWebViewUIDelegate.m */,
 				309C389B199ED3DC0028023E /* WebViewController.m */,
 				309C389C199ED3DC0028023E /* WebViewController.h */,
 				309C387A199E88B80028023E /* AppDelegate.h */,
@@ -225,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				309C387F199E88B80028023E /* MainViewController.m in Sources */,
+				309C38A2199EE8200028023E /* SAWKWebViewUIDelegate.m in Sources */,
 				309C387C199E88B80028023E /* AppDelegate.m in Sources */,
 				309C3879199E88B80028023E /* main.m in Sources */,
 				309C389D199ED3DC0028023E /* WebViewController.m in Sources */,
@@ -416,6 +426,7 @@
 				309C3895199E88B90028023E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		309C3896199E88B90028023E /* Build configuration list for PBXNativeTarget "WKWebViewFIleUrlTestTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +435,7 @@
 				309C3898199E88B90028023E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
