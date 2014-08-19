@@ -26,7 +26,8 @@
                             [self createFileUrlHelper:[self copyBundleWWWFolderToFolder:[self libraryCachesFolderPath]]],
                             [self createFileUrlHelper:[self copyBundleWWWFolderToFolder:[self documentsFolderPath]]],
                             [self createFileUrlHelper:[self copyBundleWWWFolderToFolder:[self tmpFolderPath]]],
-                            @"http://google.com"
+                            @"http://google.com",
+                            @"http://localhost:8080"
                             ];
 }
 

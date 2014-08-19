@@ -67,7 +67,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" tag="5" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a9m-XM-lic">
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a9m-XM-lic">
                                 <rect key="frame" x="83" y="272" width="84" height="30"/>
                                 <state key="normal" title="Google.com">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -76,20 +76,25 @@
                                     <segue destination="0PA-kG-Jke" kind="show" identifier="external" id="ctW-AX-C7B"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" tag="6" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yxc-F2-hpw">
+                                <rect key="frame" x="77" y="310" width="101" height="30"/>
+                                <state key="normal" title="localhost:8080">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="0PA-kG-Jke" kind="show" id="j5S-oz-qpl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="nQf-uy-TPd" firstAttribute="leading" secondItem="aKf-yg-cjI" secondAttribute="leading" id="0yu-1r-bJw"/>
-                            <constraint firstItem="nQf-uy-TPd" firstAttribute="leading" secondItem="i0q-K8-vdy" secondAttribute="leading" id="3tg-2s-fq7"/>
-                            <constraint firstItem="nQf-uy-TPd" firstAttribute="leading" secondItem="gLj-tE-6SE" secondAttribute="leading" id="6FI-os-6aN"/>
-                            <constraint firstItem="nQf-uy-TPd" firstAttribute="leading" secondItem="RpU-fn-Skd" secondAttribute="leading" id="Bm5-NA-Xvt"/>
-                            <constraint firstAttribute="centerX" secondItem="a9m-XM-lic" secondAttribute="centerX" id="Gay-pd-HVt"/>
-                            <constraint firstAttribute="centerX" secondItem="gLj-tE-6SE" secondAttribute="centerX" id="Obh-52-ecU"/>
-                            <constraint firstAttribute="centerX" secondItem="aKf-yg-cjI" secondAttribute="centerX" id="Xur-WX-PmI"/>
-                            <constraint firstAttribute="centerX" secondItem="nQf-uy-TPd" secondAttribute="centerX" id="ZIj-Pz-bDQ"/>
-                            <constraint firstAttribute="centerX" secondItem="RpU-fn-Skd" secondAttribute="centerX" id="ewm-Ex-JnS"/>
-                            <constraint firstAttribute="centerY" secondItem="a9m-XM-lic" secondAttribute="centerY" id="l2v-dd-O4i"/>
-                            <constraint firstAttribute="centerX" secondItem="i0q-K8-vdy" secondAttribute="centerX" id="q0Y-C6-jtY"/>
+                            <constraint firstAttribute="centerX" secondItem="a9m-XM-lic" secondAttribute="centerX" id="1p3-us-O72"/>
+                            <constraint firstAttribute="centerX" secondItem="i0q-K8-vdy" secondAttribute="centerX" id="Q6k-Wz-daI"/>
+                            <constraint firstAttribute="centerX" secondItem="RpU-fn-Skd" secondAttribute="centerX" id="Qmj-rf-vAY"/>
+                            <constraint firstAttribute="centerX" secondItem="Yxc-F2-hpw" secondAttribute="centerX" id="TvX-qK-Sbo"/>
+                            <constraint firstAttribute="centerX" secondItem="nQf-uy-TPd" secondAttribute="centerX" id="m2w-tu-Xb7"/>
+                            <constraint firstAttribute="centerX" secondItem="gLj-tE-6SE" secondAttribute="centerX" id="sgV-hn-d2Z"/>
+                            <constraint firstAttribute="centerX" secondItem="aKf-yg-cjI" secondAttribute="centerX" id="w5g-HC-wSM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Load www/index.html as file URL" id="c6t-Jn-aiw"/>
