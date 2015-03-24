@@ -91,4 +91,13 @@ didFinishNavigation:(WKNavigation *)navigation
 {
 }
 
+
+- (void)webView:(WKWebView *)webView
+decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction
+decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
+{
+    NSLog(@"URL: %@", [navigationAction.request.URL description]);
+    decisionHandler(WKNavigationActionPolicyAllow);
+}
+
 @end
