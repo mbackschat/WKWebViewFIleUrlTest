@@ -8,6 +8,7 @@
 
 #import "WebViewController.h"
 #import "SAWKWebViewUIDelegate.h"
+#import <objc/message.h>
 
 @interface WebViewController ()
 
@@ -35,8 +36,14 @@
     self.webView.UIDelegate = self.webViewUIDelegate;
     self.webView.navigationDelegate = self;
     
-    // load the passed in URL
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.urlToLoad]]];
+    SEL sel = NSSelectorFromString(@"loadFileURL:readAccessURL:");
+    if ([self.webView respondsToSelector:sel] && self.useLoadFileURLreadAccessURL) {
+        NSString* directory = [self.urlToLoad stringByDeletingLastPathComponent];
+        ((id (*)(id, SEL, id, id))objc_msgSend)(self.webView, sel, [NSURL URLWithString:self.urlToLoad], [NSURL URLWithString:directory]);
+    } else {
+        // load the passed in URL
+        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.urlToLoad]]];
+    }
     
     [self.view addSubview:self.webView];
     [self.view sendSubviewToBack:self.webView];

@@ -11,6 +11,8 @@
 
 @interface MainViewController ()
 
+@property (nonatomic, readwrite) BOOL loadFileURLreadAccessURLAvailable;
+
 @end
 
 @implementation MainViewController
@@ -26,8 +28,41 @@
                             [self createFileUrlHelper:[self copyBundleWWWFolderToFolder:[self libraryCachesFolderPath]]],
                             [self createFileUrlHelper:[self copyBundleWWWFolderToFolder:[self documentsFolderPath]]],
                             [self createFileUrlHelper:[self copyBundleWWWFolderToFolder:[self tmpFolderPath]]],
-                            @"http://google.com"
+                            @"http://google.com",
+                            [self createFileUrlHelper:self.wwwBundleFolderPath]
                             ];
+
+    self.indexFilePathsUselocalFileURLReadAccessURLSelector =
+                            @[
+                                 @NO,
+                                 @NO,
+                                 @NO,
+                                 @NO,
+                                 @NO,
+                                 @NO,
+                                 @YES
+                            ];
+
+    WKWebView* testWebView = [[WKWebView alloc] init];
+    SEL sel = NSSelectorFromString(@"loadFileURL:readAccessURL:");
+
+    self.loadFileURLreadAccessURLAvailable = [testWebView respondsToSelector:sel];
+    
+    if (self.loadFileURLreadAccessURLAvailable) {
+        
+        // Add the option in the UI
+        [self.localFileURLLabel setHidden:NO];
+        
+        // Notify the user with an alert
+        NSString* message = [NSString stringWithFormat:@"[AVAILABLE] loadFileURL:readAccessURL: selector is available. Current iOS version: %@", [[UIDevice currentDevice] systemVersion]];
+        NSLog(@"%@", message);
+        
+        UIAlertController* alertController = [UIAlertController  alertControllerWithTitle:@"Selector Available"  message:message  preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }]];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,12 +70,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue*)segue sender:(id)sender {
     UIButton* button = (UIButton*)sender;
     WebViewController* webViewController = segue.destinationViewController;
     
     webViewController.title = button.titleLabel.text;
     webViewController.urlToLoad = self.indexFilePaths[button.tag];
+    webViewController.useLoadFileURLreadAccessURL = self.indexFilePathsUselocalFileURLReadAccessURLSelector[button.tag];
 }
 
 - (NSString*) createFileUrlHelper:(NSString*)folderPath

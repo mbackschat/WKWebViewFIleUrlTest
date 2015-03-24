@@ -14,6 +14,7 @@
 @property (nonatomic, copy) NSString* urlToLoad;
 @property (nonatomic, strong) WKWebView* webView;
 @property (nonatomic, strong) id <WKUIDelegate> webViewUIDelegate;
+@property (nonatomic, assign) BOOL useLoadFileURLreadAccessURL;
 
 @end
 

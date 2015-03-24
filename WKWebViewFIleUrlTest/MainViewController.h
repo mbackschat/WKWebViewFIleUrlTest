@@ -11,6 +11,8 @@
 @interface MainViewController : UIViewController
 
 @property (nonatomic, strong) NSArray* indexFilePaths;
+@property (nonatomic, strong) NSArray* indexFilePathsUselocalFileURLReadAccessURLSelector;
+@property (weak, nonatomic) IBOutlet UIButton* localFileURLLabel;
 
 @end
 
