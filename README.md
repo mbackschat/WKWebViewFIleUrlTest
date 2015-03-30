@@ -5,6 +5,9 @@ A test project to demonstrate that the WKWebView class cannot load file:// urls 
 
 Here's the main page, where you can test file:// urls that come from inside the app bundle, the Library folder, the Documents folder, and the tmp folder.
 
+**UPDATE** - the code has been updated to show a new option to use the selector "loadFileURL:readAccessURL:" if available, and report it to you as well.
+
+
 ![main screenshot](main.png)
 
 
