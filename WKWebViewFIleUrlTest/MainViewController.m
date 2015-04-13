@@ -21,6 +21,26 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    __weak __typeof(self) weakSelf = self;
+    
+#if TARGET_IPHONE_SIMULATOR
+    // Notify the user with an alert
+    NSString* message = @"The WKWebView load tests only FAIL on a DEVICE. You are using the Simulator which has no sandbox restrictions.";
+    NSLog(@"%@", message);
+    
+    UIAlertController* alertController = [UIAlertController  alertControllerWithTitle:@"Device Only"  message:message  preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Continue" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [weakSelf dismissViewControllerAnimated:YES completion:nil];
+    }]];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Quit" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [weakSelf dismissViewControllerAnimated:YES completion:nil];
+        exit(0);
+    }]];
+
+    [weakSelf presentViewController:alertController animated:YES completion:nil];
+    
+#endif
+    
     // Copy all test files from bundle www, save urls
     self.indexFilePaths = @[
                             [self createFileUrlHelper:self.wwwBundleFolderPath],
@@ -59,9 +79,9 @@
         
         UIAlertController* alertController = [UIAlertController  alertControllerWithTitle:@"Selector Available"  message:message  preferredStyle:UIAlertControllerStyleAlert];
         [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [weakSelf dismissViewControllerAnimated:YES completion:nil];
         }]];
-        [self presentViewController:alertController animated:YES completion:nil];
+        [weakSelf presentViewController:alertController animated:YES completion:nil];
     }
 }
 
