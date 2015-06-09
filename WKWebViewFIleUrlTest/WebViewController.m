@@ -36,7 +36,7 @@
     self.webView.UIDelegate = self.webViewUIDelegate;
     self.webView.navigationDelegate = self;
     
-    SEL sel = NSSelectorFromString(@"loadFileURL:readAccessURL:");
+    SEL sel = NSSelectorFromString(@"loadFileURL:allowingReadAccessToURL:");
     if ([self.webView respondsToSelector:sel] && self.useLoadFileURLreadAccessURL) {
         NSString* directory = [self.urlToLoad stringByDeletingLastPathComponent];
         ((id (*)(id, SEL, id, id))objc_msgSend)(self.webView, sel, [NSURL URLWithString:self.urlToLoad], [NSURL URLWithString:directory]);

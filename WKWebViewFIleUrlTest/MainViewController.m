@@ -64,7 +64,7 @@
                             ];
 
     WKWebView* testWebView = [[WKWebView alloc] init];
-    SEL sel = NSSelectorFromString(@"loadFileURL:readAccessURL:");
+    SEL sel = NSSelectorFromString(@"loadFileURL:allowingReadAccessToURL:");
 
     self.loadFileURLreadAccessURLAvailable = [testWebView respondsToSelector:sel];
     
@@ -74,7 +74,7 @@
         [self.localFileURLLabel setHidden:NO];
         
         // Notify the user with an alert
-        NSString* message = [NSString stringWithFormat:@"[AVAILABLE] loadFileURL:readAccessURL: selector is available. Current iOS version: %@", [[UIDevice currentDevice] systemVersion]];
+        NSString* message = [NSString stringWithFormat:@"[AVAILABLE] loadFileURL:allowingReadAccessToURL: selector is available. Current iOS version: %@", [[UIDevice currentDevice] systemVersion]];
         NSLog(@"%@", message);
         
         UIAlertController* alertController = [UIAlertController  alertControllerWithTitle:@"Selector Available"  message:message  preferredStyle:UIAlertControllerStyleAlert];
