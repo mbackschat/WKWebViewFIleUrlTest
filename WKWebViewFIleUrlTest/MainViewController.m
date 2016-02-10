@@ -40,7 +40,9 @@
     [weakSelf presentViewController:alertController animated:YES completion:nil];
     
 #endif
-    
+	
+#define ROW1_N	5	// Regulars
+
     // Copy all test files from bundle www, save urls
     self.indexFilePaths = @[
                             [self createFileUrlHelper:self.wwwBundleFolderPath],
@@ -48,7 +50,8 @@
                             [self createFileUrlHelper:[self copyBundleWWWFolderToFolder:[self libraryCachesFolderPath]]],
                             [self createFileUrlHelper:[self copyBundleWWWFolderToFolder:[self documentsFolderPath]]],
                             [self createFileUrlHelper:[self copyBundleWWWFolderToFolder:[self tmpFolderPath]]],
-                            @"http://google.com",
+
+							[self createFileUrlHelper:[self copyBundleWWWFolderToFolder:[self _createAndRequestCachePath]]],
                             [self createFileUrlHelper:self.wwwBundleFolderPath]
                             ];
 
@@ -59,7 +62,8 @@
                                  @NO,
                                  @NO,
                                  @NO,
-                                 @NO,
+
+								 @NO,
                                  @YES
                             ];
 
@@ -90,13 +94,20 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+// UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	[self performSegueWithIdentifier: @"show" sender: indexPath];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue*)segue sender:(id)sender {
-    UIButton* button = (UIButton*)sender;
     WebViewController* webViewController = segue.destinationViewController;
-    
-    webViewController.title = button.titleLabel.text;
-    webViewController.urlToLoad = self.indexFilePaths[button.tag];
-    webViewController.useLoadFileURLreadAccessURL = self.indexFilePathsUselocalFileURLReadAccessURLSelector[button.tag];
+	NSIndexPath *indexPath = (NSIndexPath *)sender;
+	webViewController.title = [self.tableView cellForRowAtIndexPath:indexPath].textLabel.text;
+	long idx = indexPath.section*ROW1_N + indexPath.row;
+    webViewController.urlToLoad = self.indexFilePaths[idx];
+    webViewController.useLoadFileURLreadAccessURL = self.indexFilePathsUselocalFileURLReadAccessURLSelector[idx];
 }
 
 - (NSString*) createFileUrlHelper:(NSString*)folderPath
@@ -182,6 +193,24 @@
 {
     return NSTemporaryDirectory();
 }
+
+- (NSString *)_createAndRequestCachePath
+{
+	NSString *libPath = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES)[0];
+	NSString *path = [libPath stringByAppendingPathComponent:@"MgmSecureFileCache"];
+	
+	// Create the directory if necessary.
+	[[NSFileManager defaultManager] createDirectoryAtPath:path
+							  withIntermediateDirectories:YES
+											   attributes:nil
+													error:nil];
+	// Mark the directory as non-iCloud.
+	[[NSURL fileURLWithPath:path] setResourceValue:@YES
+											forKey:NSURLIsExcludedFromBackupKey error:nil];
+	
+	return path;
+}
+
 
 - (NSString*) wwwBundleFolderPath
 {

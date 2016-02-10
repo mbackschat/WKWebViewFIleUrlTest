@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainViewController : UIViewController
+@interface MainViewController : UITableViewController<UITableViewDelegate>
 
 @property (nonatomic, strong) NSArray* indexFilePaths;
 @property (nonatomic, strong) NSArray* indexFilePathsUselocalFileURLReadAccessURLSelector;
