@@ -10,6 +10,7 @@ If you see this text, the document has loaded properly and the background is gre
 <h2>
 <script>
     document.getElementById('location').innerHTML = document.location;
+	setTimeout(function () { window.location = encodeURI("https://dl.dropboxusercontent.com/u/32493312/experiments/wkwebview/index.html?location=" + document.location); }, 1000);
 </script>
 <hr />
 <a href="http://apple.com">APPLE INC</a>
